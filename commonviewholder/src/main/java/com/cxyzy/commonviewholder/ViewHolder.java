@@ -4,6 +4,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextWatcher;
 import android.util.SparseArray;
 import android.view.View;
@@ -14,12 +21,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import androidx.annotation.ColorInt;
-import androidx.annotation.ColorRes;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.IdRes;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * 通用 RecyclerView Holder
@@ -126,7 +127,6 @@ public class ViewHolder extends RecyclerView.ViewHolder {
      * 设置 RecyclerView item 点击监听
      *
      * @param listener
-     * @return
      */
     public ViewHolder setOnItemClickListener(View.OnClickListener listener) {
         itemView.setClickable(true);
@@ -137,8 +137,6 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     /**
      * 设置 RecyclerView item 长按监听
      *
-     * @param listener
-     * @return
      */
     public ViewHolder onItenLongClickListener(View.OnLongClickListener listener) {
         itemView.setLongClickable(true);
@@ -167,9 +165,9 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public ViewHolder setTextColorRes(int viewId, @ColorRes int color) {
+    public ViewHolder setTextColorRes(int viewId, @ColorRes int colorResId) {
         TextView view = getView(viewId);
-        view.setTextColor(mContext.getResources().getColor(color));
+        view.setTextColor(ContextCompat.getColor(mContext,colorResId));
         return this;
     }
 
@@ -223,7 +221,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
 
     /********************************** ImageView 相关函数 *****************************************/
 
-    public ViewHolder setImageResource(int viewId, int imageResId) {
+    public ViewHolder setImageResource(int viewId,@DrawableRes int imageResId) {
         ImageView view = getView(viewId);
         view.setImageResource(imageResId);
         return this;
