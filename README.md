@@ -2,7 +2,7 @@
 recyclerView统一通用adapter和viewHolder
 # 特点：
 1.使用recyclerView时， 不再需要自己增加adapter和viewHolder了。
-# 调用样例：
+# 使用方法：
 1. 工程根目录下build.gradle文件添加：
 ```
 allprojects {
